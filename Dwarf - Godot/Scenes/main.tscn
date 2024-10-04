@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1arb0ufyenvc"]
+
+[ext_resource type="PackedScene" uid="uid://dwyp3y1gqdnki" path="res://Scenes/procedural generation.tscn" id="1_lygy6"]
+[ext_resource type="Texture2D" uid="uid://dihpijqxuwx3v" path="res://icon.svg" id="3_jvcid"]
+[ext_resource type="PackedScene" uid="uid://dygyf5kmkncjq" path="res://Scenes/test_caricter.tscn" id="3_uvpq5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="procedural generation Script" parent="." instance=ExtResource("1_lygy6")]
+position = Vector2(14, 0)
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("3_jvcid")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_uvpq5")]
+position = Vector2(304, 252)
