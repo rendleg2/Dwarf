@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://dygyf5kmkncjq"]
+[gd_scene load_steps=3 format=3 uid="uid://8m8qpl31awo7"]
 
-[ext_resource type="Script" path="res://what.gd" id="1_hha6y"]
 [ext_resource type="Texture2D" uid="uid://dihpijqxuwx3v" path="res://icon.svg" id="2_ixlm6"]
 
+[sub_resource type="GDScript" id="GDScript_jt70m"]
+script/source = "extends CharacterBody2D
+
+var speed = 200
+	
+func _process(delta):
+	velocity.x = 0
+	velocity.y = 0
+	if Input.is_action_pressed(\"up\"):
+		velocity.y -= speed
+		velocity.x = 0
+	elif Input.is_action_pressed(\"down\"):
+		velocity.y += speed
+		velocity.x = 0
+	elif Input.is_action_pressed(\"left\"):
+		velocity.x -= speed
+		velocity.y = 0
+	elif Input.is_action_pressed(\"right\"):
+		velocity.x += speed
+		velocity.y = 0
+	move_and_slide()
+"
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_hha6y")
+script = SubResource("GDScript_jt70m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ixlm6")
