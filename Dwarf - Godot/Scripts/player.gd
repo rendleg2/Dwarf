@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-var speed = 200
+var speed = 2000
 var a = null
 var dir = "down"
 var movement = false
-
+var Settings_var = Settings.Settings_var
+var World_settings = Settings.World_settings
 
 func _ready():
-	pass
+	World_settings["chunkLoaderOne"] = self
 
 func _process(delta):
 	move()
