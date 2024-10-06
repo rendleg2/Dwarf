@@ -22,13 +22,15 @@ func save():
 			chunks[var_name][x].append([{"block": y}])
 
 func locate():
-	cords = World_settings["chunkLoaderOne"].position
-	var cords2 = snapped(Vector2i(cords.x, cords.y), Vector2i(Settings_var["chunkSize"], Settings_var["chunkSize"]))
+	cords = World_settings["chunkLoaderOne"].global_position
+	var cords2 = snapped(Ground.local_to_map(Vector2i(cords.x, cords.y)), Vector2i(Settings_var["chunkSize"], Settings_var["chunkSize"]))
 	var cords3 = Ground.map_to_local(Vector2i(cords2.x, cords2.y))
-	generateChunks(cords2)
+	print(cords, "   ", cords2, "   ", cords3)
+	generateChunks(cords3)
 	
 func generateChunks(cords):
 	var cords4 = Ground.local_to_map(cords)
+	print(cords4)
 	if chunks.has("notting lol"):
 		pass
 	for x in range(Settings_var["chunkSize"]):

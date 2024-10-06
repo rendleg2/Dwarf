@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 2000
+var speed = 200
 var a = null
 var dir = "down"
 var movement = false
