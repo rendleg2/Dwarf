@@ -18,7 +18,9 @@ func save():
 			chunks[var_name][x].append([{"block": y}])
 
 func locate():
-	var cords = World_settings["chunkLoaderOne"].global_position
+	var cords = World_settings["chunkLoaderOne"].position
+		# gets players posistion
+		# selects where the chunk needs to genarate
 
 func generateChunks():
 	pass
