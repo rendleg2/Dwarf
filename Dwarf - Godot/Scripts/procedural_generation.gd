@@ -11,6 +11,7 @@ var var_name = null
 
 func _ready():
 	pass
+	
 
 func save(cords):
 	chunksNumber += 1
@@ -25,8 +26,11 @@ func save(cords):
 
 func locate():
 	cords = World_settings["chunkLoaderOne"].global_position
-	var cords2 = snapped(Ground.local_to_map(Vector2i(cords.x, cords.y)), Vector2i(Settings_var["chunkSize"], Settings_var["chunkSize"]))
+	var cords3 = Ground.local_to_map(Vector2i(cords.x, cords.y))
+	var cords2 = snapped(cords3, Vector2i(Settings_var["chunkSize"], Settings_var["chunkSize"]))
 	generateChunks(cords2)
+	print(cords3, "< player, Chunk >",cords2)
+	var test = str(0, ".", cords3)
 	
 func generateChunks(cords4):
 	if chunks.has(str(cords4.x, ",", cords4.y)):
