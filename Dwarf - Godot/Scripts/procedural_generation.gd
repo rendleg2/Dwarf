@@ -30,9 +30,12 @@ func locate():
 	
 func generateChunks(cords4):
 	if chunks.has(str(cords4.x, ",", cords4.y)):
-		print("no")
+		for x in range(Settings_var["chunkSize"]):
+			for y in range(Settings_var["chunkSize"]):
+				var pos = Vector2i(cords4.x+x, cords4.y+y)
+				Ground.erase_cell(pos)
+		loadChunk(cords4)
 	else:
-		print("yes")
 		save(cords4)
 		for x in range(Settings_var["chunkSize"]):
 			for y in range(Settings_var["chunkSize"]):
@@ -46,6 +49,13 @@ func generateChunks(cords4):
 					}
 					chunks[str(cords4.x) + "," + str(cords4.y)][x][y].merge(stats)
 
+func loadChunk(cords):
+	for x in range(Settings_var["chunkSize"]):
+		for y in range(Settings_var["chunkSize"]):
+			var pos = Vector2i(cords.x+x, cords.y+y)
+			var check = chunks[str(cords.x) + "," + str(cords.y)][x][y]
+			if check["Block"] == "test":
+				Ground.set_cell(pos, 0, Vector2i(5, 0))
+
 func _on_timer_timeout():
 	locate()
-	print("gen")
